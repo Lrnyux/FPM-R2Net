@@ -21,7 +21,7 @@ https://github.com/Lrnyux/FPM-TRNet/assets/86871168/d68cb707-8018-4340-bbee-29f9
 ## Citation
 Please cite our work if you find this work useful for your research.
 ```latex
-@article{Liufpmtrnet2023,
+@article{Liufpmtrnet2024,
 author = {Yuxuan Liu, Jiasheng Zhou, Yating Luo, Sung-Liang Chen, Yao Guo and Guang-Zhong Yang},
 title = {FPM-TRNet: Fused Photoacoustic and Operating Microscopic Imaging with Cross-modality Transform and Registration Network},
 year = {},
