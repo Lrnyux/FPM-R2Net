@@ -1,4 +1,4 @@
-# FPM-TRNet
+# FPM-R^2Net
 This is the official version of paper **"FPM-TRNet: Fused Photoacoustic and Operating Microscopic Imaging with Cross-modality Transform and Registration Network"**
 ![Introduction](https://github.com/Lrnyux/FPM-TRNet/assets/86871168/64ee234b-3b4d-4fa2-b2c0-06f5ed08a77a)
 
