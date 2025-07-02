@@ -1,4 +1,3 @@
-
 import logging
 import numpy as np
 import os
@@ -11,8 +10,8 @@ import torch.nn.functional as F
 import torch
 import lpips
 import SimpleITK as  sitk
+
 # Generallly a refers to prediction and b refers to groundtruth
-from Regis_utils.func_airlab_regis import warp_image
 
 def calc_rmse(a, b, minmax=np.array([0,1])):
 
@@ -353,22 +352,54 @@ def plot_deformation_field(deformation_array, rstride=3, cstride=3, ax=None, **k
         ax.plot(phiX00[:,-1], phiX10[:,-1], **args)
     ax.invert_yaxis()
 
+def compute_grid(image_size, dtype=torch.float32, device='cpu'):
 
-if __name__ == '__main__':
-    # root = '/home/work/Yuxuan/Data/Photoacoustic/Duke_pAM/clean_valid/532_OR_50_index0.jpeg'
-    # rgb = np.array(Image.open(root))
-    # h,w = rgb.shape
-    # rgb = rgb.reshape(1,1,h,w)
-    # print(rgb.shape)
-    # rgb = torch.Tensor(rgb)
-    # padder = InputPadder(rgb.shape, divis_by=256)
-    # rgb_pad_1,rgb_pad_2 = padder.pad(rgb,rgb)
-    # print(rgb_pad_1.shape)
-    # rgb_pad_1_ = padder.unpad(rgb_pad_1)
-    # print(rgb_pad_1_.shape)
+    dim = len(image_size)
 
-    loss = lpips.LPIPS(net='alex')
-    a = torch.ones((3,3,256,256))
-    b = torch.ones((3,3,256,256))
-    error = loss(a,b)
-    print(error.detach().numpy())
+    if dim == 2:
+        nx = image_size[0]
+        ny = image_size[1]
+
+        x = torch.linspace(-1, 1, steps=ny).to(dtype=dtype)
+        y = torch.linspace(-1, 1, steps=nx).to(dtype=dtype)
+
+        x = x.expand(nx, -1)
+        y = y.expand(ny, -1).transpose(0, 1)
+
+        x.unsqueeze_(0).unsqueeze_(3)
+        y.unsqueeze_(0).unsqueeze_(3)
+
+        return torch.cat((x, y), 3).to(dtype=dtype, device=device)
+
+    elif dim == 3:
+        nz = image_size[0]
+        ny = image_size[1]
+        nx = image_size[2]
+
+        x = torch.linspace(-1, 1, steps=nx).to(dtype=dtype)
+        y = torch.linspace(-1, 1, steps=ny).to(dtype=dtype)
+        z = torch.linspace(-1, 1, steps=nz).to(dtype=dtype)
+
+        x = x.expand(ny, -1).expand(nz, -1, -1)
+        y = y.expand(nx, -1).expand(nz, -1, -1).transpose(1, 2)
+        z = z.expand(nx, -1).transpose(0, 1).expand(ny, -1, -1).transpose(0, 1)
+
+        x.unsqueeze_(0).unsqueeze_(4)
+        y.unsqueeze_(0).unsqueeze_(4)
+        z.unsqueeze_(0).unsqueeze_(4)
+
+        return torch.cat((x, y, z), 4).to(dtype=dtype, device=device)
+    else:
+        print("Error " + dim + "is not a valid grid type")
+
+def warp_image(image, displacement):
+
+    image_size = image.shape[2:]
+
+    grid = compute_grid(image_size, dtype=image.dtype, device=image.device)
+
+    # warp image
+    warped_image = F.grid_sample(image, displacement + grid)
+
+    return warped_image
+
