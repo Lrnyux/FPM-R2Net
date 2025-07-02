@@ -1,5 +1,5 @@
-# FPM-R^2Net
-This is the official version of paper **"FPM-TRNet: Fused Photoacoustic and Operating Microscopic Imaging with Cross-modality Transform and Registration Network"**
+# FPM-R2Net
+This is the official version of paper **"FPM-R2Net: Fused Photoacoustic and Operating Microscopic Imaging with Cross-modality Representation and Registration Network"**
 ![Introduction](https://github.com/Lrnyux/FPM-TRNet/assets/86871168/64ee234b-3b4d-4fa2-b2c0-06f5ed08a77a)
 
 
@@ -12,8 +12,6 @@ The proposed method takes the paired PAM and RGB images as input and predicts th
 To evaluate the performance of our proposed method, we propose two datasets for quantitative evaluation.
 The proposed synthetic and in vivo datasets will be available upon request.
 
-## Related Codes
-The codes will be available in the future step by step.
 
 ## Results Example
 https://github.com/Lrnyux/FPM-TRNet/assets/86871168/d68cb707-8018-4340-bbee-29f9698e9172
@@ -23,13 +21,12 @@ https://github.com/Lrnyux/FPM-TRNet/assets/86871168/d68cb707-8018-4340-bbee-29f9
 ## Citation
 Please cite our work if you find this work useful for your research.
 ```latex
-@article{Liufpmtrnet2024,
+@article{Liufpmr2net2025,
 author = {Yuxuan Liu, Jiasheng Zhou, Yating Luo, Sung-Liang Chen, Yao Guo and Guang-Zhong Yang},
-title = {FPM-TRNet: Fused Photoacoustic and Operating Microscopic Imaging with Cross-modality Transform and Registration Network},
-year = {},
-month = {},
-url = {},
-doi = {},
+title = {FPM-R2Net: Fused Photoacoustic and operating Microscopic imaging with cross-modality Representation and Registration Network},
+journal = {Medical Image Analysis},
+pages = {103698},
+year = {2025},
  } 
   
 ```
