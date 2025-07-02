@@ -12,6 +12,7 @@ The proposed method takes the paired PAM and RGB images as input and predicts th
 ## Related Datasets
 To evaluate the performance of our proposed method, we propose two datasets for quantitative evaluation.
 The proposed synthetic and in vivo datasets will be available upon request.
+![data_gen_v2](https://github.com/user-attachments/assets/fe607a40-ee7e-493a-9d2c-29d891756593)
 
 
 ## Results Example
