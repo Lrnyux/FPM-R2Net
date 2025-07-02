@@ -1,6 +1,7 @@
 # FPM-R2Net
-This is the official version of paper **"FPM-R2Net: Fused Photoacoustic and Operating Microscopic Imaging with Cross-modality Representation and Registration Network"**
-![Introduction](https://github.com/Lrnyux/FPM-TRNet/assets/86871168/64ee234b-3b4d-4fa2-b2c0-06f5ed08a77a)
+This is the official version of paper **"FPM-R2Net: Fused Photoacoustic and Operating Microscopic Imaging with Cross-modality Representation and Registration Network"**--[paper](https://www.sciencedirect.com/science/article/abs/pii/S1361841525002452).
+![github_cover](https://github.com/user-attachments/assets/92222188-46a8-4673-bbe1-8a51627b08de)
+
 
 
 ## Proposed Method
